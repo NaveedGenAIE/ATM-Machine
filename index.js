@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 import inquirer from "inquirer";
 let Balance = 10000;
-console.log("Your Balance is: ", Balance);
+console.log(`Your Balance is: ${Balance}`);
 const myPin = 1234;
 const pinNumber = await inquirer.prompt([
     { message: "Enter your pin Number", name: "myPinNum", type: "number" },
@@ -24,15 +24,15 @@ if (pinNumber.myPinNum === myPin) {
             },
         ]);
         if (input.inputAns > Balance) {
-            console.log(`please select valid value`);
+            console.log(`Please select a valid value.`);
         }
         else if (input.inputAns < Balance) {
             Balance -= input.inputAns;
-            console.log(`Your remaining Balance is:`, Balance);
+            console.log(`Your remaining Balance is: ${Balance}`);
         }
     }
     else if (operation.operationAns === "CheckBalance") {
-        console.log("Your Balance is:" + Balance);
+        console.log(`Your Balance is: ${Balance}`);
     }
     else if (operation.operationAns === "fast cash") {
         let option = await inquirer.prompt([
@@ -44,7 +44,7 @@ if (pinNumber.myPinNum === myPin) {
             },
         ]);
         Balance -= option.opt;
-        console.log("Your Balance is:" + Balance);
+        console.log(`Your Balance is: ${Balance}`);
     }
 }
 else {
